@@ -76,17 +76,18 @@ a {
     width: 20px;
     height: 20px;
     margin-top: -12px;
-    background-image: url(icons/icons8-search.svg);
+    background-image: url(/icons/icons8-search.svg);
 }
 
 .search_bar input {
-    width: 100%;
+    width: 70%;
     background: transparent;
     border: none;
     outline: none;
     font-size: 15px;
     font-weight: 500;
 }
+
 
 .blind {
     visibility: hidden;
