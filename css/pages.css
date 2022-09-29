@@ -2,6 +2,10 @@ ol, li {
     list-style: none;
 }
 
+em {
+    font-style: normal;
+}
+
 button .search{
     width: 70%;
     height: 70%;
@@ -61,14 +65,37 @@ div .local, div .category {
 
 .review {
     display: inline-block;
-    width: 800px;
+    width: 250px;
 }
 
 .review_image{
     background-image: url(../images/beach.jpg);
+    display: block;
+    width: 250px;
+    height: 250px;
 }
 
-.review_image {
-    width: 800px;
-    height: 400px;
+div.review_category {
+    margin-top: 3px;
+}
+
+div.review_category > .country {
+    border: 1px solid #3366CC;
+    background-color: #fff;
+    color: cornflowerblue;
+}
+
+div.review_category > em {
+    display: inline-block;
+    border-radius: 4px;
+    height: 27px;
+    margin-right: 5px;
+    padding: 0 4px;
+}
+
+div.review_category > .local 
+,div.review_category > .categ {
+    border: 1px solid #CCCCCC;
+    color: #666666;
+    background-color: #e6e6e6;
 }
