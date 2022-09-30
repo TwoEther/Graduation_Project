@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'post',
-    'account'
 ]
 
 MIDDLEWARE = [
@@ -74,7 +73,7 @@ WSGI_APPLICATION = 'fortraveler.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+# https://docs.djangoproject.com/en/4.1/ref/settings/#databasespy
 
 DATABASES = my_settings.DATABASES
 
