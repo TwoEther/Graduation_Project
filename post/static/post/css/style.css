@@ -45,6 +45,7 @@ a {
     background-position: 50% 50%;
 }
 
+
 .search_area_text {
     display: block;
     position: relative;
@@ -76,7 +77,7 @@ a {
     width: 20px;
     height: 20px;
     margin-top: -12px;
-    background-image: url(/icons/icons8-search.svg);
+    background-image: url('static/post/icons/search.png');
 }
 
 .search_bar input {

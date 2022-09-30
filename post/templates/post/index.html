@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+
+{% load static %}
+
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ForTraveler</title>
-    <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="{% static 'post/bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'post/css/style.css' %}">
 </head>
 
 <body>
@@ -19,7 +22,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
                     <a class="nav-link active" aria-current="page" href="login.html"><button type="button" class="btn btn-success">로그인</button></a>
-                    <a class="nav-link active" href="join.html"><button type="button" class="btn btn-outline-success">회원가입</button></a>
+                    <a class="nav-link active" href="register.html"><button type="button" class="btn btn-outline-success">회원가입</button></a>
                     <!-- <a class="nav-link" href="#">Pricing</a> -->
                 </div>
             </div>
@@ -34,7 +37,7 @@
 
     <div>
         <div class="search_area">
-            <span class="search_area_picture" style="background-image: url(../images/pocket-watch.jpg);"></span>
+            <span class="search_area_picture" style="background-image: url({% static 'post/images/background/road.jpg' %}) ;" ></span>
             <strong class="search_area_text">이곳에 당신의 여정을 공유하세요</strong>
             <div class="search_bar">
                 <i><em class="blind">검색</em></i>
@@ -49,49 +52,49 @@
                 <div class="title1">지역별</div>
                 <div class="area">
                     <a href="#">
-                        <span class="thumnail" style="background-image:url(../images/thumnail/Seoul.jpg) ;"></span>
+                        <span class="thumnail" style="background-image: url({% static 'post/images/thumnail/seoul.jpg' %}) ;"></span>
                         <strong class="thumnail_title">서울</strong>
                     </a>
                 </div>
     
                 <div class="area">
                     <a href="#">
-                        <span class="thumnail" style="background-image:url(../images/thumnail/busan.jpg) ;"></span>
+                        <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/busan.jpg' %}) ;"></span>
                         <strong class="thumnail_title">부산</strong>
                     </a>
                 </div>
     
                 <div class="area">
                     <a href="#">
-                        <span class="thumnail" style="background-image:url(../images/thumnail/Chungcheong.jpg) ;"></span>
+                        <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Chungcheong.jpg' %}) ;"></span>
                         <strong class="thumnail_title">충청</strong>
                     </a>
                 </div>
     
                 <div class="area">
                     <a href="#">
-                        <span class="thumnail" style="background-image:url(../images/thumnail/Daegu.jpg) ;"></span>
+                        <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Daegu.jpg' %}) ;"></span>
                         <strong class="thumnail_title">대구</strong>
                     </a>
                 </div>
     
                 <div class="area">
                     <a href="#">
-                        <span class="thumnail" style="background-image:url(../images/thumnail/Gangwon.jpg) ;"></span>
+                        <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Gangwon.jpg' %}) ;"></span>
                         <strong class="thumnail_title">강원</strong>
                     </a>
                 </div>
 
                 <div class="area">
                     <a href="#">
-                        <span class="thumnail" style="background-image:url(../images/thumnail/Gwangju.jpg) ;"></span>
+                        <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Gwangju.jpg' %}) ;"></span>
                         <strong class="thumnail_title">광주</strong>
                     </a>
                 </div>    
                 
                 <div class="area">
                     <a href="#">
-                        <span class="thumnail" style="background-image:url(../images/thumnail/Daejeon.jpg) ;"></span>
+                        <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Daejeon.jpg' %}) ;"></span>
                         <strong class="thumnail_title">대전</strong>
                     </a>
                 </div>  
@@ -100,28 +103,28 @@
             <div class="row">
                 <div class="area">
                     <a href="#">
-                        <span class="thumnail" style="background-image:url(../images/thumnail/Gyeongi.jpg) ;"></span>
+                        <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Gyeongi.jpg' %}) ;"></span>
                         <strong class="thumnail_title">경기</strong>
                     </a>
                 </div>
     
                 <div class="area">
                     <a href="#">
-                        <span class="thumnail" style="background-image:url(../images/thumnail/Incheon.jpg) ;"></span>
+                        <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Incheon.jpg' %}) ;"></span>
                         <strong class="thumnail_title">인천</strong>
                     </a>
                 </div>
     
                 <div class="area">
                     <a href="#">
-                        <span class="thumnail" style="background-image:url(../images/thumnail/Jeju.jpg) ;"></span>
+                        <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Jeju.jpg' %}) ;"></span>
                         <strong class="thumnail_title">제주</strong>
                     </a>
                 </div>
     
                 <div class="area">
                     <a href="#">
-                        <span class="thumnail" style="background-image:url(../images/thumnail/Jeonla.jpg) ;"></span>
+                        <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Jeonla.jpg' %}) ;"></span>
                         <strong class="thumnail_title">전라</strong>
                     </a>
                 </div>
