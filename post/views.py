@@ -20,3 +20,9 @@ def register(request):
         request,
         'post/register.html',
     )
+    
+def search_result(request):
+    return render(
+        request,
+        'post/search_page.html',
+    )    

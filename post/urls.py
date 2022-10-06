@@ -21,4 +21,6 @@ urlpatterns = [
     path('', views.show_post),
     path('login.html/', views.login),
     path('register.html/', views.register),
+    path('login.html/register.html/', views.register),
+    path('search_page.html/', views.search_result),
 ]
