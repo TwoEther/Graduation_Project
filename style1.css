@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+@media only screen and (max-width: 1025px) {
+    .forTraveler {
+        width: 250px;
+    }
+}   
+
+@media all and (min-width:1025px) {
+    .forTraveler {
+        width: 300px;
+    }
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.search_area {
+    position: relative;
+    padding: 90px 50px 0;
+    padding-top: 90px;
+    padding-right: 50px;
+    padding-bottom: 0px;
+    padding-left: 50px;
+    height: 300px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.search_area_picture {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.search_area_text {
+    display: block;
+    position: relative;
+    font-size: 50px;
+    line-height: 85px;
+    letter-spacing: -2px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 5px 5px rgb(0 0 0 / 50%);
+}
+
+
+.search_bar{
+    background: #fff;
+    position: relative;
+    border-radius: 1px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    max-width: 640px;
+    margin: 32px auto 0;
+    padding: 20px 64px 20px 20px;
+}
+
+.search_bar i {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    width: 20px;
+    height: 20px;
+    margin-top: -12px;
+    background-image: url(icons/icons8-search.svg);
+}
+
+.search_bar input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.blind {
+    visibility: hidden;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    font-size: 0;
+    line-height: 0;
+}
+
+.select_area {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+div.row {
+    margin-top: 25px;
+}
+
+.area {
+    width: 188px;
+}
+
+
+.title1 {
+    text-align: left;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.thumnail {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    padding-top: 100%;
+    background-color: #e9e9e9;
+    background-size: cover;
+    border-radius: 50%;
+
+}
+
+.thumnail_title {
+    display: block;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    color: #333;
+    text-align: center;
+    white-space: nowrap;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.signup_main{
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    width: 100%;
+}
+
+.signup_title{
+    text-align: center;
+    font-size: 2rem;
+    padding-bottom: 5%;
+}
+
+.main::after {
+    width: 200%;
+    height: 145%;
+    content: "";
+    background: url("https://mdbootstrap.com/img/new/fluid/city/018.jpg");
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.7;
+    }  
+   
+.signup_logo {
+        padding-bottom: 5%;
+        padding-top: 10%;
+        padding-left: 50px;
+        text-align: center;
+    }
+
+.detail_page_logo{
+    padding-bottom: 5%;
+    padding-top: 5%;
+    padding-left: 50px;
+    text-align: center;
+}
+.main{
+        max-width: 550px;
+        padding-top: 50px;
+        padding-left: 50px;
+        border-bottom: 5px;
+        background: #fff;
+        border-radius: 40px 40px 40px 40px / 40px 40px 40px 40px;
+        z-index: 1;
+    }
+.col-auto{
+        padding: 0px 24px 40px;
+        padding-left: 5px;
+}
+
+.signup_area{
+    padding-left: 30%;
+    padding-right: 30%;
+}
+.signup_content{
+    padding-top: 5%;
+}
+.detail_page_area , .detail_page_comment{
+    padding-left: 10%;
+    padding-right: 10%;
+    line-height:200%;
+}
+.detail_page_row{
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.signup_button{
+    text-align: center;
+}
+.detail_page_info, .detail_page_nickname, .detail_page_title{
+    padding-top: 10px;
+}
+.btn_return_main, .btn_submit_style{
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.detail_page_content{
+    padding : 5% 5%;
+}
+
+span.detail_page_comment_nickname{
+    font-size: 3px;
+}
+
+ul.pagination{
+    justify-content: center;
+}
