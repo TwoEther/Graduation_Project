@@ -16,11 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
+app_name = 'post'
 
 urlpatterns = [
     path('', views.show_post),
-    path('login.html/', views.login),
-    path('register.html/', views.register),
-    path('login.html/register.html/', views.register),
-    path('search_page.html/', views.search_result),
+    path('login/', views.login, name='login'),
+    path('register/', views.register, name='before_register'),
+    path('login/register/', views.register, name='after_register'),
+    path('post/', views.PostList.as_view(), name='post_list'),
+    path('post/<int:pk>/', views.show_post_detail),
+    
 ]

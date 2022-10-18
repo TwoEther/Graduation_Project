@@ -68,12 +68,18 @@ div .local, div .category {
     width: 250px;
 }
 
-.review_image{
-    background-image: url(../images/beach.jpg);
+.frame{
     display: block;
     width: 250px;
     height: 250px;
 }
+
+#review_image{
+    width: 250px;
+    height: 250px;
+}
+
+
 
 div.review_category {
     margin-top: 3px;

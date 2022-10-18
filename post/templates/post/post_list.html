@@ -86,22 +86,26 @@
             </div>
 
             <div class="col-7">
+                
                 <div class="row">
                     <ul>
+                        {% for post in post_list %}
                         <li class="review">
-                            <a href="#" target="_blank"></a>
-                            <span class="review_image"></span>
-                            <div class="review_content">
-                                <div class="review_category">
-                                    <em class="country">대한민국</em>
-                                    <em class="local">서울</em>
-                                    <em class="categ">놀이공원</em>
+                                <a href="{{post.get_absolute_url}}" target="_blank">
+                                <span class="frame"><img src="{{post.head_image.url}}" id="review_image"></span>
+                                <div class="review_content">
+                                    <div class="review_category">
+                                        <em class="country">대한민국</em>
+                                        <em class="local">서울</em>
+                                        <em class="categ">놀이공원</em>
+                                    </div>
+                                    <div class="review_title">{{post.title}}</div>
+                                    <div class="review_author"></div>
+                                    <div class="created_at">{{post.created_at}}</div>
                                 </div>
-                                <div class="review_title">어디로 갈까요</div>
-                                <div class="review_author">작성자</div>
-                                <div class="created_at">202--</div>
-                            </div>
+                            </a>
                         </li>
+                        {% endfor %}
                     </ul>
                 </div>
                 

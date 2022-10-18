@@ -21,8 +21,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
-                    <a class="nav-link active" aria-current="page" href="login.html"><button type="button" class="btn btn-success">로그인</button></a>
-                    <a class="nav-link active" href="register.html"><button type="button" class="btn btn-outline-success">회원가입</button></a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'post:login' %}"><button type="button" class="btn btn-success">로그인</button></a>
+                    <a class="nav-link active" href="{% url 'post:before_register' %}"><button type="button" class="btn btn-outline-success">회원가입</button></a>
                     <!-- <a class="nav-link" href="#">Pricing</a> -->
                 </div>
             </div>
@@ -51,49 +51,49 @@
             <div class="row">
                 <div class="title1">지역별</div>
                 <div class="area">
-                    <a href="search_page.html">
+                    <a href="{% url 'post:post_list' %}">
                         <span class="thumnail" style="background-image: url({% static 'post/images/thumnail/seoul.jpg' %}) ;"></span>
                         <strong class="thumnail_title">서울</strong>
                     </a>
                 </div>
     
                 <div class="area">
-                    <a href="search_page.html">
+                    <a href="{% url 'post:post_list' %}">
                         <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/busan.jpg' %}) ;"></span>
                         <strong class="thumnail_title">부산</strong>
                     </a>
                 </div>
     
                 <div class="area">
-                    <a href="search_page.html">
+                    <a href="{% url 'post:post_list' %}">
                         <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Chungcheong.jpg' %}) ;"></span>
                         <strong class="thumnail_title">충청</strong>
                     </a>
                 </div>
     
                 <div class="area">
-                    <a href="search_page.html">
+                    <a href="{% url 'post:post_list' %}">
                         <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Daegu.jpg' %}) ;"></span>
                         <strong class="thumnail_title">대구</strong>
                     </a>
                 </div>
     
                 <div class="area">
-                    <a href="search_page.html">
+                    <a href="{% url 'post:post_list' %}">
                         <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Gangwon.jpg' %}) ;"></span>
                         <strong class="thumnail_title">강원</strong>
                     </a>
                 </div>
 
                 <div class="area">
-                    <a href="search_page.html">
+                    <a href="{% url 'post:post_list' %}">
                         <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Gwangju.jpg' %}) ;"></span>
                         <strong class="thumnail_title">광주</strong>
                     </a>
                 </div>    
                 
                 <div class="area">
-                    <a href="search_page.html">
+                    <a href="{% url 'post:post_list' %}">
                         <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Daejeon.jpg' %}) ;"></span>
                         <strong class="thumnail_title">대전</strong>
                     </a>
@@ -102,28 +102,28 @@
             
             <div class="row">
                 <div class="area">
-                    <a href="search_page.html">
+                    <a href="{% url 'post:post_list' %}">
                         <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Gyeongi.jpg' %}) ;"></span>
                         <strong class="thumnail_title">경기</strong>
                     </a>
                 </div>
     
                 <div class="area">
-                    <a href="search_page.html">
+                    <a href="{% url 'post:post_list' %}">
                         <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Incheon.jpg' %}) ;"></span>
                         <strong class="thumnail_title">인천</strong>
                     </a>
                 </div>
     
                 <div class="area">
-                    <a href="search_page.html">
+                    <a href="{% url 'post:post_list' %}">
                         <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Jeju.jpg' %}) ;"></span>
                         <strong class="thumnail_title">제주</strong>
                     </a>
                 </div>
     
                 <div class="area">
-                    <a href="search_page.html">
+                    <a href="{% url 'post:post_list' %}">
                         <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Jeonla.jpg' %}) ;"></span>
                         <strong class="thumnail_title">전라</strong>
                     </a>

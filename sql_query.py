@@ -43,7 +43,7 @@ def createTable():
                 title varchar(50),  
                 created_at date,
                 content varchar(1000),
-                head_image mediumblob,
+                head_image varchar(250),
                 author varchar(20),
                 category varchar(20)
             );"""
