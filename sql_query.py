@@ -4,96 +4,72 @@
     실행
 '''
 
+
 import pymysql
 
-def dropTable():
-    global conn
-    cur = conn.cursor()
-    sql = "drop table post"
-    
-    try:
-        cur.execute(sql)
-    except pymysql.err.OperationalError or pymysql.err.InterfaceError:
-        pass
-    else:
-        conn.commit()
-    
-    sql = "drop table category"
-    try:
-        cur.execute(sql)
-    except pymysql.err.OperationalError or pymysql.err.InterfaceError:
-        pass
-    else:
-        conn.commit()
 
-    sql = "drop table user"
-    try:
-        cur.execute(sql)
-    except pymysql.err.OperationalError or pymysql.err.InterfaceError:
-        pass
-    else:
-        conn.commit()
+def dropTable(table_list):
+    def exc(tableName):
+        global conn
+        cur = conn.cursor()
+        sql = "drop table "+tableName
+        
+        try:
+            cur.execute(sql)
+        except pymysql.err.OperationalError or pymysql.err.InterfaceError:
+            pass
+        else:
+            conn.commit()
+    
+    for table in table_list: exc(table)
+        
+    
 
 def createTable():
-    global conn
-    try:
-        with conn.cursor() as cursor: 
-            sql = """create table post (  
-                PN	integer auto_increment primary key , 
-                title varchar(50),  
-                created_at date,
-                content varchar(1000),
-                head_image varchar(250),
-                author varchar(20),
-                category varchar(20)
-            );"""
-            
-            cursor.execute(sql)
-            conn.commit()
-    finally:
-        pass
-    
-    try:
-        with conn.cursor() as cursor: 
-            sql = """create table category (
-                name varchar(20) primary key
-            );"""
+    def exc(sql):
+        global conn
+        try:
+            with conn.cursor() as cursor: 
+                cursor.execute(sql)
+                conn.commit()
+                
+        finally:
+            pass
+        
+    sql = """create table post (  
+        PN	integer auto_increment primary key , 
+        title varchar(50),  
+        created_at date,
+        content varchar(1000),
+        head_image varchar(250),
+        author varchar(20),
+        main_category varchar(20)
+    );"""
+    exc(sql)            
+        
+    sql = """create table category (
+        id integer auto_increment primary key,
+        main_category varchar(20)
+    );"""
+    exc(sql)                   
+        
+    sql = """create table user (
+        id varchar(20) primary key,
+        passwd varchar(20),
+        nickname varchar(20),
+        UNIQUE index (nickname)     
+    );"""
+    exc(sql) 
                         
-            cursor.execute(sql)
-            conn.commit()
-    finally:
-        pass
+    sql = """
+        create table photo (
+        id integer auto_increment primary key,
+        postnum integer,
+        image varchar(250)
+    );
+    """
+    exc(sql) 
     
-    try:
-        with conn.cursor() as cursor: 
-            sql = """create table user (
-            id varchar(20) primary key,
-            passwd varchar(20),
-            nickname varchar(20),
-            UNIQUE index (nickname)     
-        );"""
-                        
-            cursor.execute(sql)
-            conn.commit()
-    finally:
-        pass
-
-    try:
-        with conn.cursor() as cursor: 
-            sql = """ALTER TABLE post ADD FOREIGN KEY(author) REFERENCES user(nickname);"""
-            cursor.execute(sql)
-            conn.commit()
-    finally:
-        pass
-    
-    try:
-        with conn.cursor() as cursor: 
-            sql = """ALTER TABLE post ADD FOREIGN KEY(category) REFERENCES category(name);"""
-            cursor.execute(sql)
-            conn.commit()
-    finally:
-        pass
-
 if __name__ == "__main__":
     conn = pymysql.connect(
         user='root', 
@@ -102,6 +78,6 @@ if __name__ == "__main__":
         db='mydb',             # db 바꾸기 
         charset='utf8'
     )
-
-    dropTable()
+    table_list = ['post', 'category', 'photo', 'user']
+    dropTable(table_list)
     createTable()

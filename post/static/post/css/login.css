@@ -12,6 +12,7 @@
     overflow: hidden;
 }
 
+
 @keyframes movebg {
     0% {
         background-position: 0 50%;

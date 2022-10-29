@@ -1,35 +1,27 @@
 <!DOCTYPE html>
-
-{% load static %}
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ForTraveler</title>
-    <link rel="stylesheet" href="{% static 'post/bootstrap/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'post/css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'post/css/pages.css' %}">
+    <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/pages.css">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a href="{% url 'post:main' %}"><img class="forTraveler" src="https://fontmeme.com/permalink/220915/c6ef805ef970debb1312e27648f01afc.png"></img></a>
+            <a href="index.html"><img class="forTraveler" src="https://fontmeme.com/permalink/220915/c6ef805ef970debb1312e27648f01afc.png"></img></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
-                    {% if user.is_authenticated %}
-                    <a class="nav-link active" aria-current="page" href="{% url 'post:profile' %}"><button type="button" class="btn btn-success">나의 정보</button></a>
-                    <a class="nav-link active" href="{% url 'post:logout' %}"><button type="button" class="btn btn-outline-success">로그아웃</button></a>
-                    {% else %}
-                        <a class="nav-link active" aria-current="page" href="{% url 'post:login' %}"><button type="button" class="btn btn-success">로그인</button></a>
-                        <a class="nav-link active" href="{% url 'post:register' %}"><button type="button" class="btn btn-outline-success">회원가입</button></a>
-                        <!-- <a class="nav-link" href="#">Pricing</a> -->
-                    {% endif %}
+                    <a class="nav-link active" aria-current="page" href="login.html"><button type="button" class="btn btn-success">로그인</button></a>
+                    <a class="nav-link active" href="join.html"><button type="button" class="btn btn-outline-success">회원가입</button></a>
+                    <!-- <a class="nav-link" href="#">Pricing</a> -->
                 </div>
             </div>
         </div>
@@ -40,10 +32,10 @@
             <div class="col-1"></div>
             <div class="col-3" id="side_bar">
                 <div class="result">검색결과</div>
-                <form class="search_bar_side" method="GET" action="{% url 'post:search_result' %}">
-                    <input type="text" name="q" autocomplete="off" placeholder="검색어를 입력하세요" id="searchBox" value="">
+                <div class="search_bar_side">
+                    <input type="text" autocomplete="off" placeholder="검색어를 입력하세요" id="searchBox" value="">
                     <a class="btn btn-secondary btn-sm" href="#" role="button">검색</a>
-                </form>
+                </div>
 
                 <div class="search_bottom">
                     <div class="local">
@@ -91,26 +83,22 @@
             </div>
 
             <div class="col-7">
-                
                 <div class="row">
                     <ul>
-                        {% for post in posts %}
                         <li class="review">
-                                <a href="{{post.get_absolute_url}}" target="_blank">
-                                <span class="frame"><img src="{{post.head_image.url}}" id="review_image"></span>
-                                <div class="review_content">
-                                    <div class="review_category">
-                                        <em class="country">대한민국</em>
-                                        <em class="local">{{post.main_category}}</em>
-                                        <em class="categ">놀이공원</em>
-                                    </div>
-                                    <div class="review_title">{{post.title}}</div>
-                                    <div class="review_author"></div>
-                                    <div class="created_at">{{post.created_at}}</div>
+                            <a href="#" target="_blank"></a>
+                            <span class="review_image"></span>
+                            <div class="review_content">
+                                <div class="review_category">
+                                    <em class="country">대한민국</em>
+                                    <em class="local">서울</em>
+                                    <em class="categ">놀이공원</em>
                                 </div>
-                            </a>
+                                <div class="review_title">어디로 갈까요</div>
+                                <div class="review_author">작성자</div>
+                                <div class="created_at">202--</div>
+                            </div>
                         </li>
-                        {% endfor %}
                     </ul>
                 </div>
                 

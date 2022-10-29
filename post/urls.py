@@ -19,11 +19,12 @@ from . import views
 app_name = 'post'
 
 urlpatterns = [
-    path('', views.show_post),
+    path('', views.show_main_page, name='main'),
     path('login/', views.login, name='login'),
-    path('register/', views.register, name='before_register'),
-    path('login/register/', views.register, name='after_register'),
-    path('post/', views.PostList.as_view(), name='post_list'),
+    path('logout/', views.logout, name='logout'),
+    path('register/', views.register, name='register'),
+    path('post/', views.search_result, name='search_result'),
     path('post/<int:pk>/', views.show_post_detail),
+    path('profile/', views.profile_page, name='profile'),
     
 ]
