@@ -134,7 +134,6 @@ div.row {
     margin-top: 20px;
 }
 
-
 .thumnail_title {
     display: block;
     margin-top: 10px;
@@ -143,6 +142,52 @@ div.row {
     color: #333;
     text-align: center;
     white-space: nowrap;
+}
+
+.new_thumnail {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.new_thumnail:hover{
+    margin-top: 0px;
+}
+
+button {
+    border-radius: 0px;
+}
+
+form > div > #btn_submit{
+    background-color: white;
+    border: 0;
+    outline: 0;
+    padding: 0px 0px 0px 0px;
+}
+
+form > div > #btn_submit_text{
+    display: block;
+    margin: auto;
+    font-size: 20px;
+    background-color: white;
+    border: 0;
+    outline: 0;
+    padding: 0px 0px 0px 0px;
+    text-align: center;
+}
+
+form.area {
+    padding: 0px 12px 0px 12px;
+}
+
+
+strong {
+    display: block;
+    text-align: center;
+    white-space: nowrap;
+    width: 100%;
 }
 
 .thumnail:hover{

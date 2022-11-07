@@ -1,5 +1,6 @@
 import json
-
+from unicodedata import category
+from django.http import JsonResponse
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
@@ -12,6 +13,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import get_user_model
 from django.db.models import Q
 from django.contrib.auth.hashers import check_password, make_password
+from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 
@@ -32,12 +34,21 @@ def profile_page(request):
 
 def search_result(request):
     posts, query = None, None
-    print(request.GET)
     # 장고 검색 기능
     if 'q' in request.GET:  
         query = request.GET.get('q')
-        posts = Post.objects.all().filter(title__icontains=query)
-        print(query, posts)
+        # posts = Post.objects.all().filter(Q(title__icontains=query))
+        category1 = Category1.objects.filter(category=query)
+        category2 = Category2.objects.filter(category=query)
+        
+        if not category1.exists(): category_num1 = 0
+        else: category_num1 = category1.values_list()[0][0]
+        
+        if not category2.exists(): category_num2 = 0
+        else: category_num2 = category2.values_list()[0][0]
+        
+        posts = Post.objects.all().filter(Q(title__icontains=query) | Q(category1=category_num1) | Q(category1=category_num2))
+        
     return render(request,
                 'post/post_list.html',
                 {'query' : query,
@@ -54,7 +65,41 @@ def show_post_detail(request, pk):
             'photo':photo,
         }
     )
+
+@csrf_exempt
+def upload(request):
+    if request.method =='POST':
+        title, content = request.POST.get('title',), request.POST.get('content', )
+        main_category = request.POST.get('city')
+        sub_category=request.POST.get('category')
     
+
+        category_num1 = main_category
+        category_num2 = sub_category
+        
+        post=Post()
+        post.title = title
+        post.content = content
+        post.category1_id = category_num1
+        post.category2_id = category_num2
+        post.author = request.user
+        
+        for idx, img in enumerate(request.FILES.getlist('files')):
+            if idx == 0: 
+                post.head_image=img
+                post.save()
+            else:
+                photo=Photo()
+                photo.postnum=post
+                photo.image=img
+                photo.save()
+            
+        return redirect('/')
+    
+    else:
+        return render(request, 'post/upload.html')
+
+
 # Create your views here.
 def register(request):   
     if request.method == 'POST':
@@ -79,15 +124,10 @@ def login(request):
     if request.method == "POST":
         # login.html에서 넘어온 username과 password를 각 변수에 저장한다.
         id = request.POST['id']
-        password = make_password(request.POST['password'])
-        user = User.objects.get(username=id)
-        print(user)
+        password = request.POST['password']
+        user = auth.authenticate(request, username=id, password=password)
         
-        print(user.password, password)
-        print(check_password(user.password, password))
-        
-        # 해당 username과 password와 일치하는 user 객체를 가져온다.
-        if user is not None and check_password(user.password, make_password(password)):
+        if user is not None: 
             auth.login(request, user)
             return redirect('/')
         else:

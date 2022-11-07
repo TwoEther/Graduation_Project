@@ -10,4 +10,5 @@ class PostAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(Post, PostAdmin)
-admin.site.register(Category)
+admin.site.register(Category1)
+admin.site.register(Category2)

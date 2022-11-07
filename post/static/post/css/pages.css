@@ -11,6 +11,10 @@ button .search{
     height: 70%;
 }
 
+#write_post {
+    margin: 10px 10px 10px 10px;
+}
+
 div .result {
     margin-bottom: 20px;
     text-align: left;
@@ -22,12 +26,30 @@ div .img_map > img {
     height: 30px;
 }
 
+.local_form {
+    width: 100px;
+    padding-left: 0;
+}
+
+.btn_local {
+    text-align: center;
+    background-color: white;
+    border: 2px solid;
+    border-radius: 20px 20px 20px 20px;
+    width: 100%;
+    margin: 5px 5px 0px 0px;
+}
+
 .local_text {
     text-align: center;
     border: 2px solid;
     border-radius: 20px 20px 20px 20px;
     width: 20%;
     margin: 5px 5px 0px 0px;
+}
+
+.new_local_text {
+    margin: auto;
 }
 
 .local_text:hover{
@@ -104,4 +126,9 @@ div.review_category > .local
     border: 1px solid #CCCCCC;
     color: #666666;
     background-color: #e6e6e6;
+}
+
+
+.clicked {
+    color: blue;
 }

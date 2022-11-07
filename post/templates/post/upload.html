@@ -4,9 +4,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.88.1">
     <title>upload</title>
     {% load static %}
     <!-- jquery 사용 -->
@@ -80,35 +77,58 @@
         <section class="py-5 text-center container">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">파일형식:사진만 최대4개 까지</h1>
-                    <input id="input_feed_title" class="form-control form-control-lg" type="text" placeholder="제목"
-                        aria-label=".form-control-lg example">
-                    <div class="form-floating">
-                        <textarea id="input_feed_content" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-                            style="height: 500px;"></textarea>
-                        <label for="floatingTextarea2">본문 작성</label>
-                    </div>
-                    <div class="insert">
-                        <form method="POST" onsubmit="return false;" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <input type="file" onchange="addFile(this);" multiple />
+                    <h1 class="fw-light">당신의 여정을 공유하세요!</h1>
+                    <hr>
+                    <form action="{% url 'post:upload'%}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <select id="city" name="city" class="form-select" aria-label="Default select example" >
+                            <option value="default" selected>지역</option>
+                            <option value="1">서울</option>
+                            <option value="2">대전</option>
+                            <option value="3">대구</option>
+                            <option value="4">부산</option>
+                            <option value="5">강원</option>
+                            <option value="6">전라</option>
+                            <option value="7">제주</option>
+                            <option value="8">인천</option>
+                            <option value="9">경기</option>
+                            <option value="10">광주</option>
+                            <option value="11">충청</option>
+                        </select>
+                        <hr>
+
+                        <select id="category" name="category" class="form-select" aria-label="Default select example">
+                            <option value="default" selected>카테고리</option>
+                            <option value="1">액티비티</option>
+                            <option value="2">카페</option>
+                            <option value="3">맛집</option>
+                            <option value="4">숙소</option>
+                        </select>
+                        <hr>
+
+                        <input id="title" name="title" class="form-control form-control-lg" type="text" placeholder="제목"
+                        aria-label=".form-control-lg example"></input>
+                        <hr>
+                        <div class="form-floating">
+                            <input id="content" name="content" class="form-control" placeholder="Leave a comment here"
+                                style="height: 500px;"></input>
+                            <label for="floatingTextarea2">본문 작성</label>
+                        </div>
+                        <hr>
+                            {% comment %} <input type="file" onchange="addFile(this);" multiple /> {% endcomment %}
+                            <input type="file" id="files" name="files" multiple />
                             <div class="file-list"></div>
-                        </form>
-                    </div>
-                
-                    <p class="lead text-muted">By bootstrap</p>
-                    <p>
-                        <a href="" id="feed_create_btn" class="btn btn-primary my-2">글 올리기</a>
-                        <a href="#" class="btn btn-secondary my-2">취소하기</a>
-                    </p>
+                        </div>
+                        <p>
+                            {% comment %} <a href="" id="feed_create_btn" class="btn btn-primary my-2">글 올리기</a> {% endcomment %}
+                            <input type="submit" value="글 올리기" class="btn btn-primary my-2"></input>
+                            <a href="#"id="cancle_btn" class="btn btn-secondary my-2">취소하기</a>
+                        </p>
+                    </form>
                 </div>
             </div>
         </section>
     </main>
-    <!-- {% for posts in post %}
-    <div><img src="{% get_media_prefix %}{{posts.head_image}}">
-        {{posts.title}}</div>
-    {% endfor %} -->
 
     <footer class="text-muted py-5">
         <div class="container">
@@ -126,20 +146,20 @@
     
 
 </body>
-<script>
+{% comment %} <script>
     var fileNo = 0;
     var filesArr = new Array();
     let formData;
-
     
-
+    
     // Ver2.
     /* 첨부파일 추가 */
     function addFile(obj) {
-        var maxFileCnt = 4;   // 첨부파일 최대 개수
+        var maxFileCnt = 10;   // 첨부파일 최대 개수
         var attFileCnt = document.querySelectorAll('.filebox').length;    // 기존 추가된 첨부파일 개수
         var remainFileCnt = maxFileCnt - attFileCnt;    // 추가로 첨부가능한 개수
         var curFileCnt = obj.files.length;  // 현재 선택된 첨부파일 개수
+
 
         // 첨부파일 개수 확인
         if (curFileCnt > remainFileCnt) {
@@ -203,75 +223,41 @@
         filesArr[num].is_delete = true;
     }
 
-    // /* 폼 전송 */
-    // function submitForm() {
-    //     // 폼데이터 담기
-    //     var form = document.querySelector("form");
-    //     formData = new FormData(form);
-    //     for (var i = 0; i < filesArr.length; i++) {
-    //         // 삭제되지 않은 파일만 폼데이터에 담기
-    //         if (!filesArr[i].is_delete) {
-    //             formData.append("attach_file", filesArr[i]);
-    //         }
-
-    //     }
-
-
-    //     $.ajax({
-    //         method: 'POST',
-    //         url: '/',
-    //         dataType: 'json',
-    //         data: formData,
-    //         async: true,
-    //         timeout: 30000,
-    //         cache: false,
-    //         processData:false,
-    //         contentType:false,
-    //         headers: { 'cache-control': 'no-cache', 'pragma': 'no-cache' },
-    //         success: function () {
-    //             alert("파일업로드 성공");
-    //         },
-    //         error: function (xhr, desc, err) {
-    //             alert('에러가 발생 하였습니다.');
-    //             return;
-    //         }
-    //     })
-    // }
 
     $('#feed_create_btn').click(function (){
-        alert("공유");
+        let city=$("#city option:checked").text();
+        let category=$("#category option:checked").text();
 
         let title=$('#input_feed_title').val();
         let content=$('#input_feed_content').val();
         let user_id="test";
         
         let fd=new FormData();
-        for (var i = 0; i < filesArr.length; i++) {
-            // 삭제되지 않은 파일만 폼데이터에 담기
-            if (!filesArr[i].is_delete) {
-                fd.append("files", filesArr[i].name);
-                fd.append("file_org", filesArr[i]);
 
-            }
-        }
-
-        fd.append('size',filesArr.length);
+        fd.append('category',category);
+        fd.append('city',city);
+        fd.append('head_image',filesArr[0])
         fd.append('title',title);
         fd.append('content',content);
-        fd.append('user_id',user_id);
+
+        
+        for (var i = 1; i < filesArr.length; i++) {
+            // 삭제되지 않은 파일만 폼데이터에 담기
+            if (!filesArr[i].is_delete) {
+                fd.append("file_org", filesArr[i]);
+            }
+        }
 
 
         $.ajax({
             method: 'POST',
             url: '/upload/',
-            //dataType: formData,
             data: fd,
             async: true,
             timeout: 30000,
             cache: false,
             processData:false,
             contentType:false,
-            //headers: { 'cache-control': 'no-cache', 'pragma': 'no-cache' },
             success: function () {
                 alert("파일업로드 성공");
             },
@@ -285,6 +271,11 @@
             }
         })
     });
+    $('#cancle_btn').click(function (){
+        // alert('cancle');
+        location.replace("/");
+    }); {% endcomment %}
+
 </script>
 
 </html>

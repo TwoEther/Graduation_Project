@@ -11,11 +11,6 @@
     <link rel="stylesheet" href="{% static 'post/bootstrap/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'post/css/style.css' %}">
 
-    <script>
-        $.ajaxSetup({
-          headers: { "X-CSRFToken": '{{csrf_token}}' }
-        });
-    </script>
 </head>
 
 <body>
@@ -62,115 +57,149 @@
         <div class="select_area">
             <div class="row">
                 <div class="title1">지역별</div>
-                <div class="area">
-                    <a href="search_page.html">
-                    <a href="{% url 'post:search_result' %}">
-                        <span class="thumnail" style="background-image: url({% static 'post/images/thumnail/seoul.jpg' %}) ;"></span>
-                        <strong class="thumnail_title">서울</strong>
-                    </a>
-                </div>
+                <form class="area" method="GET" action={% url 'post:search_result'%}>
+                    <div>
+                    {% csrf_token %}   
+                        <button type="submit" value="서울" name="q" id="btn_submit"><img src={% static 'post/images/thumnail/Seoul.jpg' %} class="new_thumnail"></button>
+                        <button type="submit" value="서울" name="q" id="btn_submit_text">서울</button>
+                    </div>
+                </form>   
     
-                <div class="area">
-                    <a href="search_page.html">
-                    <a href="{% url 'post:search_result' %}">
-                        <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/busan.jpg' %}) ;"></span>
-                        <strong class="thumnail_title">부산</strong>
-                    </a>
-                </div>
+                <form class="area" method="GET" action={% url 'post:search_result'%}>
+                    <div class="new_local_text">
+                    {% csrf_token %}   
+                        <button type="submit" value="부산" name="q" id="btn_submit"><img src={% static 'post/images/thumnail/busan.jpg' %} class="new_thumnail"></button>
+                        <button type="submit" value="부산" name="q" id="btn_submit_text">부산</button>
+                    </div>
+                </form>   
     
-                <div class="area">
-                    <a href="search_page.html">
-                    <a href="{% url 'post:search_result' %}">
-                        <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Chungcheong.jpg' %}) ;"></span>
-                        <strong class="thumnail_title">충청</strong>
-                    </a>
-                </div>
+                <form class="area" method="GET" action={% url 'post:search_result'%}>
+                    <div>
+                    {% csrf_token %}   
+                        <button type="submit" value="충청" name="q" id="btn_submit"><img src={% static 'post/images/thumnail/Chungcheong.jpg' %} class="new_thumnail"></button>
+                        <button type="submit" value="충청" name="q" id="btn_submit_text">충청</button>
+                    </div>
+                </form>   
     
-                <div class="area">
-                    <a href="search_page.html">
-                    <a href="{% url 'post:search_result' %}">
-                        <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Daegu.jpg' %}) ;"></span>
-                        <strong class="thumnail_title">대구</strong>
-                    </a>
-                </div>
+                <form class="area" method="GET" action={% url 'post:search_result'%}>
+                    <div>
+                    {% csrf_token %}   
+                        <button type="submit" value="대구" name="q" id="btn_submit"><img src={% static 'post/images/thumnail/Daegu.jpg' %} class="new_thumnail"></button>
+                        <button type="submit" value="대구" name="q" id="btn_submit_text">대구</button>
+                    </div>
+                </form>   
     
-                <div class="area">
-                    <a href="search_page.html">
-                    <a href="{% url 'post:search_result' %}">
-                        <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Gangwon.jpg' %}) ;"></span>
-                        <strong class="thumnail_title">강원</strong>
-                    </a>
-                </div>
+                <form class="area" method="GET" action={% url 'post:search_result'%}>
+                    <div>
+                    {% csrf_token %}   
+                        <button type="submit" value="강원" name="q" id="btn_submit"><img src={% static 'post/images/thumnail/Gangwon.jpg' %} class="new_thumnail"></button>
+                        <button type="submit" value="강원" name="q" id="btn_submit_text">강원</button>
+                    </div>
+                </form>    
 
-                <div class="area">
-                    <a href="search_page.html">
-                    <a href="{% url 'post:search_result' %}">
-                        <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Gwangju.jpg' %}) ;"></span>
-                        <strong class="thumnail_title">광주</strong>
-                    </a>
-                </div>    
+                <form class="area" method="GET" action={% url 'post:search_result'%}>
+                    <div>
+                    {% csrf_token %}   
+                        <button type="submit" value="광주" name="q" id="btn_submit"><img src={% static 'post/images/thumnail/Gwangju.jpg' %} class="new_thumnail"></button>
+                        <button type="submit" value="광주" name="q" id="btn_submit_text">광주</button>
+                    </div>
+                </form>    
                 
-                <div class="area">
-                    <a href="search_page.html">
-                    <a href="{% url 'post:search_result' %}">
-                        <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Daejeon.jpg' %}) ;"></span>
-                        <strong class="thumnail_title">대전</strong>
-                    </a>
-                </div>  
+                <form class="area" method="GET" action={% url 'post:search_result'%}>
+                    <div>
+                    {% csrf_token %}   
+                        <button type="submit" value="대전" name="q" id="btn_submit"><img src={% static 'post/images/thumnail/Daejeon.jpg' %} class="new_thumnail"></button>
+                        <button type="submit" value="대전" name="q" id="btn_submit_text">대전</button>
+                    </div>
+                </form> 
             </div>
             
             <div class="row">
-                <div class="area">
-                    <a href="search_page.html">
-                    <a href="{% url 'post:search_result' %}">
-                        <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Gyeongi.jpg' %}) ;"></span>
-                        <strong class="thumnail_title">경기</strong>
-                    </a>
-                </div>
+                <form class="area" method="GET" action={% url 'post:search_result'%}>
+                    <div>
+                    {% csrf_token %}   
+                        <button type="submit" value="경기" name="q" id="btn_submit"><img src={% static 'post/images/thumnail/Gyeongi.jpg' %} class="new_thumnail"></button>
+                        <button type="submit" value="경기" name="q" id="btn_submit_text">경기</button>
+                    </div>
+                </form>
     
-                <div class="area">
-                    <a href="search_page.html">
-                    <a href="{% url 'post:search_result' %}">
-                        <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Incheon.jpg' %}) ;"></span>
-                        <strong class="thumnail_title">인천</strong>
-                    </a>
-                </div>
+                <form class="area" method="GET" action={% url 'post:search_result'%}>
+                    <div>
+                    {% csrf_token %}   
+                        <button type="submit" value="인천" name="q" id="btn_submit"><img src={% static 'post/images/thumnail/incheon.jpg' %} class="new_thumnail"></button>
+                        <button type="submit" value="인천" name="q" id="btn_submit_text">인천</button>
+                    </div>
+                </form>
     
-                <div class="area">
-                    <a href="search_page.html">
-                    <a href="{% url 'post:search_result' %}">
-                        <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Jeju.jpg' %}) ;"></span>
-                        <strong class="thumnail_title">제주</strong>
-                    </a>
-                </div>
+                <form class="area" method="GET" action={% url 'post:search_result'%}>
+                    <div>
+                    {% csrf_token %}   
+                        <button type="submit" value="제주" name="q" id="btn_submit"><img src={% static 'post/images/thumnail/Jeju.jpg' %} class="new_thumnail"></button>
+                        <button type="submit" value="제주" name="q" id="btn_submit_text">제주</button>
+                    </div>
+                </form>
     
-                <div class="area">
-                    <a href="search_page.html">
-                    <a href="{% url 'post:search_result' %}">
-                        <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Jeonla.jpg' %}) ;"></span>
-                        <strong class="thumnail_title">전라</strong>
-                    </a>
-                </div>
+                <form class="area" method="GET" action={% url 'post:search_result'%}>
+                    <div>
+                    {% csrf_token %}   
+                        <button type="submit" value="전라" name="q" id="btn_submit"><img src={% static 'post/images/thumnail/Jeonla.jpg' %} class="new_thumnail"></button>
+                        <button type="submit" value="전라" name="q" id="btn_submit_text">전라</button>
+                    </div>
+                </form>
 
-                <div class="area">
-                    <a href="search_page.html">
-                    <a href="{% url 'post:search_result' %}">
-                        <span class="thumnail" style="background-image:url({% static 'post/images/thumnail/Jeonla.jpg' %}) ;"></span>
-                        <strong class="thumnail_title">테스트</strong>
-                    </a>
-                </div>
+                <form class="area" method="GET" action={% url 'post:search_result'%}>
+                    <div>
+                    {% csrf_token %}   
+                        <button type="submit" value="경주" name="q" id="btn_submit"><img src={% static 'post/images/thumnail/Jeonla.jpg' %} class="new_thumnail"></button>
+                        <button type="submit" value="경주" name="q" id="btn_submit_text">경주</button>
+                    </div>
+                </form>
 
 
+            </div>
+
+            <div class="row">
+                <div class="title1">카테고리 별</div>
+                <form class="area" method="GET" action={% url 'post:search_result'%}>
+                    <div>
+                    {% csrf_token %}   
+                        <button type="submit" value="액티비티" name="q" id="btn_submit"><img src={% static 'post/images/thumnail/acti.jpg' %} class="new_thumnail"></button>
+                        <button type="submit" value="액티비티" name="q" id="btn_submit_text">액티비티</button>
+                    </div>
+                </form>   
+
+                <form class="area" method="GET" action={% url 'post:search_result'%}>
+                    <div>
+                    {% csrf_token %}   
+                        <button type="submit" value="카페" name="q" id="btn_submit"><img src={% static 'post/images/thumnail/cafe.jpg' %} class="new_thumnail"></button>
+                        <button type="submit" value="카페" name="q" id="btn_submit_text">카페</button>
+                    </div>
+                </form>   
+
+                <form class="area" method="GET" action={% url 'post:search_result'%}>
+                    <div>
+                    {% csrf_token %}   
+                        <button type="submit" value="숙소" name="q" id="btn_submit"><img src={% static 'post/images/thumnail/house.jpg' %} class="new_thumnail"></button>
+                        <button type="submit" value="숙소" name="q" id="btn_submit_text">숙소</button>
+                    </div>
+                </form>   
+
+                <form class="area" method="GET" action={% url 'post:search_result'%}>
+                    <div>
+                    {% csrf_token %}   
+                        <button type="submit" value="맛집" name="q" id="btn_submit"><img src={% static 'post/images/thumnail/food.jpg' %} class="new_thumnail"></button>
+                        <button type="submit" value="맛집" name="q" id="btn_submit_text">맛집</button>
+                    </div>
+                </form>   
             </div>
         </div>
     </div>
 
     <!-- Footer-->
     <footer class="py-5 bg-dark">
-        <div class="container"><p class="m-0 text-center text-white">Link to icons8</p></div>
+        <div class=""><p class="m-0 text-center text-white">Link to icons8</p></div>
     </footer>
-    
-    
+
     
 </body>
 

@@ -39,10 +39,13 @@
         <div class="row">
             <div class="col-1"></div>
             <div class="col-3" id="side_bar">
-                <div class="result">검색결과</div>
+                <div class="result">
+                    <span>검색 결과</span>
+                    <a class="btn btn-secondary btn-sm" href="{% url 'post:upload' %}" role="button">새 글 작성</a>
+                </div>
                 <form class="search_bar_side" method="GET" action="{% url 'post:search_result' %}">
                     <input type="text" name="q" autocomplete="off" placeholder="검색어를 입력하세요" id="searchBox" value="">
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">검색</a>
+                    <a id="write_post" class="btn btn-secondary btn-sm" href="#" role="button">검색</a>
                 </form>
 
                 <div class="search_bottom">
@@ -54,18 +57,77 @@
                         
                         <div class="container">
                             <div class="row m-0">
-                                <div class="local_text"><a href="#">서울</a></div>
-                                <div class="local_text"><a href="#">대구</a></div>
-                                <div class="local_text"><a href="#">대전</a></div>
-                                <div class="local_text"><a href="#">부산</a></div>
-                                <div class="local_text"><a href="#">강원</a></div>
-                                <div class="local_text"><a href="#">제주</a></div>
-                                <div class="local_text"><a href="#">경상</a></div>
-                                <div class="local_text"><a href="#">전라</a></div>
-                                <div class="local_text"><a href="#">경기</a></div>
-                                <div class="local_text"><a href="#">충청</a></div>
-                                <div class="local_text"><a href="#">광주</a></div>
-                                <div class="local_text"><a href="#">인천</a></div>
+                                <form class="local_form" method="GET" action={% url 'post:search_result'%}>
+                                    {% csrf_token %}   
+                                        <button type="submit" value="대구" name="q" class="btn_local">대구</button>
+                                </form> 
+
+                                <form class="local_form" method="GET" action={% url 'post:search_result'%}>
+                                    <div>
+                                    {% csrf_token %}   
+                                        <button type="submit" value="대전" name="q" class="btn_local">대전</button>
+                                    </div>
+                                </form> 
+
+                                <form class="local_form" method="GET" action={% url 'post:search_result'%}>
+                                    <div>
+                                    {% csrf_token %}   
+                                        <button type="submit" value="부산" name="q" class="btn_local">부산</button>
+                                    </div>
+                                </form>
+
+                                <form class="local_form" method="GET" action={% url 'post:search_result'%}>
+                                    {% csrf_token %}   
+                                        <button type="submit" value="서울" name="q" class="btn_local">서울</button>
+                                </form> 
+
+
+                                <form class="local_form" method="GET" action={% url 'post:search_result'%}>
+                                    {% csrf_token %}   
+                                        <button type="submit" value="경기" name="q" class="btn_local">경기</button>
+                                </form> 
+
+                                <form class="local_form" method="GET" action={% url 'post:search_result'%}>
+                                    <div>
+                                    {% csrf_token %}   
+                                        <button type="submit" value="제주" name="q" class="btn_local">제주</button>
+                                    </div>
+                                </form> 
+
+                                <form class="local_form" method="GET" action={% url 'post:search_result'%}>
+                                    <div>
+                                    {% csrf_token %}   
+                                        <button type="submit" value="전라" name="q" class="btn_local">전라</button>
+                                    </div>
+                                </form>
+
+                                <form class="local_form" method="GET" action={% url 'post:search_result'%}>
+                                    <div>
+                                    {% csrf_token %}   
+                                        <button type="submit" value="광주" name="q" class="btn_local">광주</button>
+                                    </div>
+                                </form>
+
+                                <form class="local_form" method="GET" action={% url 'post:search_result'%}>
+                                    <div>
+                                    {% csrf_token %}   
+                                        <button type="submit" value="충청" name="q" class="btn_local">충청</button>
+                                    </div>
+                                </form>
+
+                                <form class="local_form" method="GET" action={% url 'post:search_result'%}>
+                                    <div>
+                                    {% csrf_token %}   
+                                        <button type="submit" value="인천" name="q" class="btn_local">인천</button>
+                                    </div>
+                                </form>
+
+                                <form class="local_form" method="GET" action={% url 'post:search_result'%}>
+                                    <div>
+                                    {% csrf_token %}   
+                                        <button type="submit" value="강원" name="q" class="btn_local">강원</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -101,8 +163,8 @@
                                 <div class="review_content">
                                     <div class="review_category">
                                         <em class="country">대한민국</em>
-                                        <em class="local">{{post.main_category}}</em>
-                                        <em class="categ">놀이공원</em>
+                                        <em class="local">{{post.category1}}</em>
+                                        <em class="categ">{{post.category2}}</em>
                                     </div>
                                     <div class="review_title">{{post.title}}</div>
                                     <div class="review_author"></div>
