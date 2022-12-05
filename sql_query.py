@@ -33,7 +33,7 @@ def createTable():
         created_at date,
         content varchar(1000),
         head_image varchar(250),
-        author varchar(20),
+        author integer,
         category1 varchar(20),
         category2 varchar(20)
     );"""
@@ -64,8 +64,9 @@ def createTable():
         create table comment (
         id integer auto_increment primary key,
         postnum integer,
-        author varchar(20),
-        content varchar(100)
+        author integer,
+        content varchar(100),
+        created_at datetime
     );
     """
     exc(sql) 
@@ -102,7 +103,7 @@ def select_all_table(table_list):
 if __name__ == "__main__":
     conn = pymysql.connect(
         user='root', 
-        passwd='rootuser',     # 비밀번호 바꾸기
+        passwd='ruddk1380',     # 비밀번호 바꾸기
         host='127.0.0.1',             
         db='mydb',             # db 바꾸기 
         charset='utf8'

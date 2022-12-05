@@ -25,7 +25,10 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('upload/', views.upload, name='upload'),
     path('post/', views.search_result, name='search_result'),
-    path('post/<int:pk>/', views.show_post_detail),
+    path('post/<int:pk>/', views.show_post_detail, name='post_detail'),
+    path('profile/<int:pk>/', views.show_post_detail, name='profile_detail'),
     path('profile/', views.profile_page, name='profile'),
-    
+    path('post/<int:pk>/<int:comment_pk>/delete',views.comment_delete,name='comment_delete'),
+    path('post/<int:pk>/delete', views.post_delete, name='post_delete'),
+    path('post/<int:pk>/update', views.post_update, name='update'),
 ]

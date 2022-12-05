@@ -4,6 +4,10 @@ body {
     font-family: 'Noto Sans KR', sans-serif;
 }
 
+.detail_page_main {
+    margin-top: 30px;
+}
+
 .detail_image{
     width: 200px;
     height: 200px;

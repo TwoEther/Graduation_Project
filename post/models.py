@@ -61,6 +61,7 @@ class Comment(models.Model):
     postnum = models.ForeignKey(Post, models.CASCADE, db_column='postnum')
     author = models.ForeignKey(User, models.CASCADE, db_column='author')
     content = models.CharField(max_length=100, blank=True, null=True)
+    created_at = models.DateTimeField(blank=True, null=True, auto_now_add=True)
 
     class Meta:
         managed = False

@@ -18,6 +18,8 @@
 </head>
 
 <body>
+    
+
     <div
         style="display: flex; flex-direction: row; text-align: center; justify-content: center; padding-top: 60px; padding-right: 60px;">
         <div style="padding: 20px 60px;">
@@ -46,7 +48,7 @@
             </div>
 
             <div style="margin-bottom: 10px;">
-                내 게시물 99 북마크 99
+                내 게시물 {{post_count}}
             </div>
             <div>
                 <b>name</b>
@@ -69,28 +71,21 @@
             </span>북마크</div>
     </div>
 
+    
 
     <div style="width: 100%; min-width: 100%; display: flex; align-items: center; justify-content: center; margin-top: 30px;">
-        <div style="display: flex; flex-direction: row; flex-wrap: wrap; width: 1200px; justify-content: center; text-align: left;">
-            <div style="width: 500px; height: 100px; margin: 10px 5px 0px 5px;">
-                <img src="berlin-ga81f27ae9_1920.jpg" style="width: 100px; height: 100px; border-radius: 20px;">
-                <b>안녕하세요 여기는 제목을 넣을겁니다.</b>
-            </div>
-            <div style="width: 500px; height: 100px; margin: 10px 5px 0px 5px;">
-                <img src="berlin-ga81f27ae9_1920.jpg" style="width: 100px; height: 100px; border-radius: 20px;">
-                <b>안녕하세요 여기는 제목을 넣을겁니다.</b>
-            </div>
-            <div style="width: 500px; height: 100px; margin: 10px 5px 0px 5px;">
-                <img src="berlin-ga81f27ae9_1920.jpg" style="width: 100px; height: 100px; border-radius: 20px;">
-                <b>안녕하세요 여기는 제목을 넣을겁니다.</b>
-            </div>
-            <div style="width: 500px; height: 100px; margin: 10px 5px 0px 5px;">
-                <img src="berlin-ga81f27ae9_1920.jpg" style="width: 100px; height: 100px; border-radius: 20px;">
-                <b>안녕하세요 여기는 제목을 넣을겁니다.</b>
-            </div>
-            <div style="width: 500px; height: 100px; margin: 10px 5px 0px 5px;">
-                <img src="berlin-ga81f27ae9_1920.jpg" style="width: 100px; height: 100px; border-radius: 20px;">
-                <b>안녕하세요 여기는 제목을 넣을겁니다.</b>
+        <div class="container">
+            <div class="row">
+                {% for mypost in mypost %}
+                <div class="col-4" style="margin-bottom:30px">
+                    <a href="{% url 'post:profile_detail' mypost.pk %}">    
+                        <span>
+                            <img src="{{mypost.head_image.url}}" style="width: 100px; height: 100px; border-radius: 20px;">
+                            <b>{{mypost.title}}</b>
+                        </span>
+                    </a>
+                </div>
+                {% endfor %}
             </div>
         </div>
 

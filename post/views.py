@@ -14,6 +14,7 @@ from django.contrib.auth import get_user_model
 from django.db.models import Q
 from django.contrib.auth.hashers import check_password, make_password
 from django.core.files.storage import FileSystemStorage
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -26,10 +27,21 @@ def show_main_page(request):
 def profile_page(request):
     User = get_user_model()
     
+    if request.user.is_authenticated:
+        mypost=Post.objects.filter(author=request.user)
+    else:
+        return render(request, 'post/login.html')
+    post_count = len(mypost)
+    
     return render(
         request,
-        'post/profile.html'
+        'post/profile.html',
+        {
+            'post_count' : post_count,
+            'mypost':mypost,
+        }
     )
+
 
 
 def search_result(request):
@@ -47,7 +59,7 @@ def search_result(request):
         if not category2.exists(): category_num2 = 0
         else: category_num2 = category2.values_list()[0][0]
         
-        posts = Post.objects.all().filter(Q(title__icontains=query) | Q(category1=category_num1) | Q(category1=category_num2))
+        posts = Post.objects.all().filter(Q(title__icontains=query) | Q(category1=category_num1) | Q(category2=category_num2))
         
     return render(request,
                 'post/post_list.html',
@@ -57,15 +69,100 @@ def search_result(request):
 def show_post_detail(request, pk):
     post = Post.objects.get(pk=pk)              # 해당 포스트만 가져옴
     photo = Photo.objects.filter(postnum_id=pk) # 해당 포스트의 사진만 가져옴
+    comment=Comment()
+    # print(pk)
+    if request.method=='POST':
+        if request.user.is_authenticated:
+            content=request.POST['content']
+            comment.content=content
+            comment.postnum=post
+            comment.author=request.user
+            comment.save()
+        else:
+            return render(request, 'post/login.html')
+    
+    # page
+    page=request.GET.get('page')
+    comment=Comment.objects.filter(postnum_id=pk).order_by('-id')  #해당 포스트의 댓글만 가져옴
+    paginator=Paginator(comment,10)
+    repost=paginator.get_page(page)
+
+
     return render(
         request,
         'post/post_detail.html',
         {
             'post':post,
             'photo':photo,
+            'comment':comment,
+            'repost':repost,
         }
     )
 
+@csrf_exempt
+def comment_delete(request,pk,comment_pk):
+    post = Post.objects.get(pk=pk)              # 해당 포스트만 가져옴
+    photo = Photo.objects.filter(postnum_id=pk) # 해당 포스트의 사진만 가져옴
+    # comment=Comment.objects.filter(postnum_id=pk).order_by('-id')
+    # page
+    page=request.GET.get('page')
+    comment=Comment.objects.filter(postnum_id=pk).order_by('-id')  #해당 포스트의 댓글만 가져옴
+    paginator=Paginator(comment,10)
+    repost=paginator.get_page(page)
+    if request.method=='POST':
+        # comment.id가 삭제되어야함
+        del_comment=Comment.objects.get(pk=comment_pk)
+        del_comment.delete()
+    return render(
+        request,
+        'post/post_detail.html',
+        {
+            'post':post,
+            'photo':photo,
+            'comment':comment,
+            'repost':repost,
+        }
+    )
+    # return redirect('/post/'+int(post.pk))
+@csrf_exempt
+def post_delete(request,pk):
+    post = Post.objects.get(pk=pk)              # 해당 포스트만 가져옴
+    # photo = Photo.objects.filter(postnum_id=pk) # 해당 포스트의 사진만 가져옴
+    if request.method=='POST':
+        if request.user.is_authenticated:
+            # print(post.pk)
+            post.delete()
+        else:
+            return render(request, 'post/login.html')
+    return redirect("/post")
+
+@csrf_exempt
+def post_update(request,pk):
+    # 포스트의 pk를 불러오고 pk빼고 나머지를 저장
+    post=Post.objects.get(pk=pk)
+    if request.method=='POST':
+        post.title=request.POST['title']
+        post.content=request.POST['content']
+        post.category1_id=request.POST['city']
+        post.category2_id=request.POST['category']
+        # print(request.POST['title'])
+        post.save()
+        for idx, img in enumerate(request.FILES.getlist('files')):
+            if idx == 0: 
+                post.head_image=img
+                post.save()
+                photo=Photo.objects.filter(postnum_id=pk)
+                photo.delete()
+            else:
+                photo=Photo()
+                photo.postnum=post
+                photo.image=img
+                photo.save()
+        return redirect('/')
+    else:
+        return render(request,'post/update.html',{'post':post})
+    
+    ...
 @csrf_exempt
 def upload(request):
     if request.method =='POST':
