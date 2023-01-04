@@ -42,7 +42,7 @@ def createTable():
     sql = """create table category1 (
         id integer auto_increment primary key,
         category varchar(20)
-    );"""
+    );"""   
     exc(sql)  
     
     sql = """create table category2 (
