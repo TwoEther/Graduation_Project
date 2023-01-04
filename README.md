@@ -1,5 +1,5 @@
 <h1>여행객을 위한 관광지 리뷰 사이트</h1>
-
+<hr/>
 <h3> Team </h3>
 PyeonTaekUniv.
 
@@ -9,6 +9,7 @@ PyeonTaekUniv.
  <li>💻 Django</li>
  <li>🎢 MySQL</li>
  <li>🔧 HTML, CSS</li>
+ <li>🥀 Bootstrap</li>
 </ul>
 
 <h3> role </h3>
@@ -18,14 +19,16 @@ PyeonTaekUniv.
  <li>백엔드 개발 2명 </li>
 </ul> 
 
-<h3> Summary </h3>
-<p>
- 주요한 기능으로는 포스트 작성, 수정, 삭제와 회원가입 로그인 기능이 있으며, 사이트
- 이용자는 다른 이용자가 쓴 포스트에 대해 댓글을 작성 할 수 있습니다.</p>
+<h3>주요 기능</h3>
+<ul>
+ <li>로그인 및 회원가입</li>
+ <li>포스트 생성 및 삭제등의 CRUD 기능</li>
+ <li>포스트 댓글 기능</li>
+</ul> 
  
 <h3> DB table </h3>
-<ul>
- <li>Post</li>
- <li>Photo </li>
- <li>Comment </li>
-</ul> 
+
+
+![5-1](https://user-images.githubusercontent.com/101616106/210490686-83f179f9-3058-4a18-a626-8acdf9fb2f93.png)
+
+
