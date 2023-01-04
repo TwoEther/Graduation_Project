@@ -3,6 +3,7 @@
 <h3> Team </h3>
 PyeonTaekUniv.
 
+<hr/>
 <h3> Stack </h3>
 <ul>
  <li>🥀 Python</li>
@@ -12,6 +13,7 @@ PyeonTaekUniv.
  <li>🥀 Bootstrap</li>
 </ul>
 
+<hr/>
 <h3> role </h3>
 <ul>
  <li>자료조사 1명</li>
@@ -19,6 +21,7 @@ PyeonTaekUniv.
  <li>백엔드 개발 2명 </li>
 </ul> 
 
+<hr/>
 <h3>주요 기능</h3>
 <ul>
  <li>로그인 및 회원가입</li>
@@ -26,6 +29,7 @@ PyeonTaekUniv.
  <li>포스트 댓글 기능</li>
 </ul> 
  
+<hr/>
 <h3> DB table </h3>
 
 
